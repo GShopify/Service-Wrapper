@@ -3,6 +3,7 @@ package middleware
 import (
 	"context"
 	"fmt"
+	"github.com/gshopify/service-wrapper/model"
 	"net/http"
 	"strings"
 )
@@ -13,8 +14,8 @@ const (
 
 type GShopifyContext struct {
 	RequestId string
-	Country   string
-	Language  string
+	Country   model.CountryCode
+	Language  model.LanguageCode
 }
 
 func (c *GShopifyContext) String() string {
@@ -37,15 +38,20 @@ func GShopify() func(next http.Handler) http.Handler {
 			}
 
 			if s := r.Header.Get("X-GShopify-Country"); s != "" {
-				ctx.Country = strings.TrimSpace(s)
+				ctx.Country = model.CountryCode(s)
 			} else {
-				ctx.Country = "US"
+				ctx.Country = model.CountryCodeUs
 			}
 
 			if s := r.Header.Get("X-GShopify-Language"); s != "" {
-				ctx.Language = strings.TrimSpace(s)
+				ctx.Language = model.LanguageCode(s)
 			} else {
-				ctx.Language = "EN"
+				ctx.Language = model.LanguageCodeEn
+			}
+
+			if !ctx.Country.IsValid() || !ctx.Language.IsValid() {
+				w.WriteHeader(http.StatusBadRequest)
+				return
 			}
 
 			next.ServeHTTP(w, r.WithContext(
