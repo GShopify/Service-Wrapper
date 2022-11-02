@@ -105,6 +105,8 @@ models:
   LanguageCode:
     model: github.com/gshopify/service-wrapper/model.LanguageCode
   CountryCode:
-    model: github.com/gshopify/service-wrapper/model.CountryCode" > "$path/graphql/gqlgen.yml"
+    model: github.com/gshopify/service-wrapper/model.CountryCode
+  UnsignedInt64:
+    model: github.com/gshopify/service-wrapper/model.UInt" > "$path/graphql/gqlgen.yml"
 
 echo "== DONE"
