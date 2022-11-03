@@ -62,16 +62,19 @@ Now we are ready to implement `graphql/generated/resolver.go` and start server `
 - [ ] `query` publicApiVersions
 
 #### Customers
-- [ ] `query` customer
+- [ ] `query` customer `onProgress`
 - [x] `mutation` customerAccessTokenCreate
 - [ ] `mutation` customerAccessTokenCreateWithMultipass
-- [ ] `mutation` customerAccessTokenDelete
+- [x] `mutation` customerAccessTokenDelete
 - [x] `mutation` customerAccessTokenRenew
 - [ ] `mutation` customerActivate
 - [ ] `mutation` customerActivateByUrl
 - [ ] `mutation` customerAddressCreate
 - [ ] `mutation` customerAddressDelete
 - [ ] `mutation` customerAddressUpdate
+- [ ] `mutation` customerCreate
+- [ ] `mutation` customerDefaultAddressUpdate
+- [ ] `mutation` customerRecover
 - [ ] `mutation` customerReset
 - [ ] `mutation` customerResetByUrl
 - [ ] `mutation` customerUpdate
