@@ -61,12 +61,12 @@ var (
 
 func init() {
 	pflag.Parse()
-
 	config.Instance()
-  config.PrintBanner()
 }
 
 func main() {
+  config.PrintBanner()
+
   go func() {
     // server must be run here
   }()
