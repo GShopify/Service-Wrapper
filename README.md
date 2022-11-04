@@ -62,7 +62,7 @@ Now we are ready to implement `graphql/generated/resolver.go` and start server `
 - [ ] `query` publicApiVersions
 
 #### Customers
-- [ ] `query` customer `onProgress`
+- [x] `query` customer `partially`
 - [x] `mutation` customerAccessTokenCreate
 - [ ] `mutation` customerAccessTokenCreateWithMultipass
 - [x] `mutation` customerAccessTokenDelete
@@ -77,7 +77,7 @@ Now we are ready to implement `graphql/generated/resolver.go` and start server `
 - [ ] `mutation` customerRecover
 - [ ] `mutation` customerReset
 - [ ] `mutation` customerResetByUrl
-- [ ] `mutation` customerUpdate
+- [x] `mutation` customerUpdate
 
 #### Online store
 - [ ] `query` articles
