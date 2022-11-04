@@ -7,12 +7,37 @@ import (
 )
 
 type Config struct {
-	Endpoint     string `json:"endpoint"`
+	Endpoint string     `json:"endpoint"`
+	Admin    Credential `json:"admin"`
+	Cli      Credential `json:"cli"`
+}
+
+type Credential struct {
 	Realm        string `json:"realm"`
 	ClientId     string `json:"client_id"`
 	ClientSecret string `json:"client_secret"`
-	Admin        string `json:"admin"`
+	Login        string `json:"login"`
 	Password     string `json:"password"`
+}
+
+func (cred *Credential) Validate() error {
+	if strings.TrimSpace(cred.Realm) == "" {
+		return fmt.Errorf("credential realm must be provided")
+	}
+
+	if strings.TrimSpace(cred.ClientId) == "" {
+		return fmt.Errorf("credential ClientId must be provided")
+	}
+
+	if strings.TrimSpace(cred.ClientSecret) == "" && strings.TrimSpace(cred.Login) == "" {
+		return fmt.Errorf("credential secrets must be provided")
+	}
+
+	if strings.TrimSpace(cred.ClientSecret) == "" && strings.TrimSpace(cred.Password) == "" {
+		return fmt.Errorf("credential secrets must be provided")
+	}
+
+	return nil
 }
 
 func New() *Config {
@@ -41,24 +66,12 @@ func (c *Config) Validate() error {
 		return fmt.Errorf("endpoint host must be provided")
 	}
 
-	if strings.TrimSpace(c.Realm) == "" {
-		return fmt.Errorf("keycloak realm must be provided")
+	if err = c.Admin.Validate(); err != nil {
+		return err
 	}
 
-	if strings.TrimSpace(c.ClientId) == "" {
-		return fmt.Errorf("keycloak ClientId must be provided")
-	}
-
-	if strings.TrimSpace(c.ClientSecret) == "" {
-		return fmt.Errorf("keycloak ClientSecret must be provided")
-	}
-
-	if strings.TrimSpace(c.Admin) == "" {
-		return fmt.Errorf("keycloak admin must be provided")
-	}
-
-	if strings.TrimSpace(c.Password) == "" {
-		return fmt.Errorf("keycloak admin password must be provided")
+	if err = c.Cli.Validate(); err != nil {
+		return err
 	}
 
 	return nil
