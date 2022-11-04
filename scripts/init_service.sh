@@ -102,6 +102,8 @@ resolver:
 autobind: []
 omit_getters: true
 models:
+  DateTime:
+    model: github.com/gshopify/service-wrapper/scalar.DateTime
   LanguageCode:
     model: github.com/gshopify/service-wrapper/model.LanguageCode
   CountryCode:
