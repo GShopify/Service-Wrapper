@@ -72,7 +72,7 @@ Now we are ready to implement `graphql/generated/resolver.go` and start server `
 - [ ] `mutation` customerAddressCreate
 - [ ] `mutation` customerAddressDelete
 - [ ] `mutation` customerAddressUpdate
-- [ ] `mutation` customerCreate
+- [x] `mutation` customerCreate
 - [ ] `mutation` customerDefaultAddressUpdate
 - [ ] `mutation` customerRecover
 - [ ] `mutation` customerReset
