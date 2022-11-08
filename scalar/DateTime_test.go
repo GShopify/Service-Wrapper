@@ -9,6 +9,7 @@ func TestDateTime_UnmarshalGQL(t *testing.T) {
 		wantErr bool
 	}{
 		{DateTime(1567871400000), "2019-09-07T15:50:00Z", false},
+		{DateTime(1567871400000), "1567871400000", false},
 		{DateTime(1567871400000), 1567871400000, false},
 		{DateTime(1567871400000), 1567871400000.99, false},
 		{DateTime(1567871400000), DateTime(1567871400000), false},
