@@ -23,7 +23,7 @@ type Credential struct {
 	Login        string `json:"login"`
 	Password     string `json:"password"`
 
-	_mu        sync.Locker  `json:"-"`
+	_mu        sync.Mutex   `json:"-"`
 	_expiresAt time.Time    `json:"-"`
 	_token     *gocloak.JWT `json:"-"`
 }
