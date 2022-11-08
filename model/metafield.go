@@ -46,7 +46,7 @@ func MetafieldValue(t MetafieldType, v any) string {
 			return fmt.Sprintf("%v", v)
 		}
 
-		return fmt.Sprintf("%d", dt)
+		return dt.String()
 	}
 
 	return fmt.Sprintf("%v", v)
