@@ -72,10 +72,18 @@ func (s *impl) Token(parent context.Context, sid string) (string, error) {
 	}
 
 	if r.Count < 1 {
-		return "", nil
+		return "", fmt.Errorf("could not retrieve SID: `%s`", sid)
 	}
 
 	return string(r.Kvs[0].Value), nil
+}
+
+func (s *impl) DeleteToken(parent context.Context, sid string) error {
+	ctx, cancel := context.WithTimeout(parent, s.timeout)
+	defer cancel()
+
+	_, err := s.cli.Delete(ctx, s.session(sid))
+	return err
 }
 
 func (s *impl) session(sid string) string {
