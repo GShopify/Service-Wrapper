@@ -300,6 +300,14 @@ func (e LanguageCode) String() string {
 	return string(e)
 }
 
+func (e LanguageCode) SqlFieldSelection(f string) string {
+	if LanguageCodeEn == e {
+		return fmt.Sprintf("%[1]s['%[2]s'] as %[1]s", f, LanguageCodeEn)
+	}
+
+	return fmt.Sprintf("if(notEmpty(%[1]s['%[2]s']), %[1]s['%[2]s'], %[1]s['%[3]s']) as %[1]s", f, e, LanguageCodeEn)
+}
+
 func (e *LanguageCode) UnmarshalGQL(v interface{}) error {
 	str, ok := v.(string)
 	if !ok {
