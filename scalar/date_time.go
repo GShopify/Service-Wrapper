@@ -17,6 +17,10 @@ func NewDateTimeIn(seconds int) DateTime {
 		time.Now().In(time.UTC).Add(time.Duration(seconds) * time.Second).UnixMilli())
 }
 
+func NewDateTimeFrom(t time.Time) DateTime {
+	return DateTime(t.In(time.UTC).UnixMilli())
+}
+
 func Now() DateTime {
 	return DateTime(time.Now().In(time.UTC).UnixMilli())
 }
