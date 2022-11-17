@@ -1,5 +1,7 @@
 ## Service Wrapper
 
+![go-lint](https://github.com/GShopify/Service-Wrapper/actions/workflows/golangci-lint.yml/badge.svg?branch=main)
+
 Base wrapper for federated services
 
 ### New service initializing
