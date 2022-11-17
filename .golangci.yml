@@ -1,0 +1,25 @@
+run:
+  tests: false
+  skip-dirs:
+    - bin
+    - env
+    - resources
+    - scripts
+    - vendor
+
+linters-settings:
+  bidichk:
+    left-to-right-embedding: true
+    right-to-left-embedding: true
+    pop-directional-formatting: true
+    left-to-right-override: true
+    right-to-left-override: true
+    left-to-right-isolate: true
+    right-to-left-isolate: true
+    first-strong-isolate: true
+    pop-directional-isolate: true
+
+  errcheck:
+    check-blank: true
+    exclude-functions:
+      - (net/http.ResponseWriter).Write([]byte)

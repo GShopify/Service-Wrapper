@@ -8,6 +8,7 @@ require (
 	github.com/Nerzal/gocloak/v12 v12.0.0
 	github.com/gorilla/mux v1.8.0
 	github.com/spf13/pflag v1.0.5
+	github.com/vektah/gqlparser/v2 v2.5.1
 	go.etcd.io/etcd/client/v3 v3.5.5
 )
 
@@ -26,7 +27,6 @@ require (
 	github.com/opentracing/opentracing-go v1.2.0 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/segmentio/ksuid v1.0.4 // indirect
-	github.com/vektah/gqlparser/v2 v2.5.1 // indirect
 	go.etcd.io/etcd/api/v3 v3.5.5 // indirect
 	go.etcd.io/etcd/client/pkg/v3 v3.5.5 // indirect
 	go.uber.org/atomic v1.7.0 // indirect
