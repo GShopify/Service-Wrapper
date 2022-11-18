@@ -308,6 +308,14 @@ func (e LanguageCode) SqlFieldSelection(f string) string {
 	return fmt.Sprintf("if(notEmpty(%[1]s['%[2]s']), %[1]s['%[2]s'], %[1]s['%[3]s']) as %[1]s", f, e, LanguageCodeEn)
 }
 
+func (e LanguageCode) SqlArraySelection(f string) string {
+	if LanguageCodeEn == e {
+		return fmt.Sprintf("arrayMap(m -> (m['%[2]s']), %[1]s) as %[1]s", f, LanguageCodeEn)
+	}
+
+	return fmt.Sprintf("arrayMap(m -> (if(notEmpty(m['%[2]s']), m['%[2]s'], m['%[3]s'])), %[1]s) as %[1]s", f, e, LanguageCodeEn)
+}
+
 func (e *LanguageCode) UnmarshalGQL(v interface{}) error {
 	str, ok := v.(string)
 	if !ok {
