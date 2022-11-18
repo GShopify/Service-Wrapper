@@ -2,8 +2,8 @@ package scalar
 
 import (
 	"encoding/json"
-	"github.com/opentracing/opentracing-go/log"
 	"io"
+	"log"
 	"regexp"
 	"strconv"
 	"time"
@@ -37,7 +37,7 @@ func (d DateTime) MarshalJSON() ([]byte, error) {
 func (d DateTime) MarshalGQL(w io.Writer) {
 	_, err := w.Write([]byte(strconv.Quote(d.String())))
 	if err != nil {
-		log.Error(err)
+		log.Default().Println(err)
 	}
 }
 

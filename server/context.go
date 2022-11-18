@@ -3,8 +3,8 @@ package server
 import (
 	"context"
 	"github.com/99designs/gqlgen/graphql"
-	"github.com/opentracing/opentracing-go/log"
 	"github.com/vektah/gqlparser/v2/ast"
+	"log"
 )
 
 func GetPreloads(ctx context.Context) []string {
@@ -47,7 +47,7 @@ func GetFieldValue(ctx context.Context, field string, arg string) any {
 		if key := f.Arguments.ForName(arg); key != nil {
 			val, err := key.Value.Value(graphql.GetOperationContext(ctx).Variables)
 			if err != nil {
-				log.Error(err)
+				log.Default().Println(err)
 			}
 
 			return val

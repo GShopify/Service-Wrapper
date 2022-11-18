@@ -1,8 +1,8 @@
 package model
 
 import (
-	"github.com/opentracing/opentracing-go/log"
 	"io"
+	"log"
 	"strconv"
 )
 
@@ -41,6 +41,6 @@ func (i *UInt) UnmarshalGQL(v interface{}) error {
 func (i UInt) MarshalGQL(w io.Writer) {
 	_, err := w.Write(strconv.AppendUint(nil, uint64(i), 10))
 	if err != nil {
-		log.Error(err)
+		log.Default().Println(err)
 	}
 }
