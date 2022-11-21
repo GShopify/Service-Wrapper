@@ -101,6 +101,8 @@ resolver:
   type: Resolver
 autobind: []
 omit_getters: true
+#omit_getters: true
+#omit_slice_element_pointers: true
 models:
   DateTime:
     model: github.com/gshopify/service-wrapper/scalar.DateTime
@@ -109,6 +111,12 @@ models:
   CountryCode:
     model: github.com/gshopify/service-wrapper/model.CountryCode
   UnsignedInt64:
-    model: github.com/gshopify/service-wrapper/model.UInt" > "$path/graphql/gqlgen.yml"
+    model: github.com/gshopify/service-wrapper/model.UInt
+    PageInfo:
+      model: github.com/gshopify/service-wrapper/model.PageInfo
+    HTML:
+      model: github.com/gshopify/service-wrapper/scalar.Html
+    JSON:
+      model: github.com/gshopify/service-wrapper/scalar.Json" > "$path/graphql/gqlgen.yml"
 
 echo "== DONE"
