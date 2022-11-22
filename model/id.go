@@ -10,7 +10,7 @@ func NewId(namespace Gid, id string) string {
 }
 
 func ParseId(namespace Gid, id string) (string, error) {
-	s := regexp.MustCompile(`^gid://gshopify/(\w+)/(\w+)$`).FindAllStringSubmatch(id, -1)
+	s := regexp.MustCompile(`^gid://gshopify/(\w+)/([\w-]+)$`).FindAllStringSubmatch(id, -1)
 	if len(s) != 1 || len(s[0]) != 3 {
 		return "", fmt.Errorf("illegal ID format: %s", id)
 	}

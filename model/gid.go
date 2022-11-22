@@ -6,4 +6,5 @@ const (
 	GidProduct    Gid = "product"
 	GidOption     Gid = "option"
 	GidCollection Gid = "collection"
+	GidLocation   Gid = "location"
 )
