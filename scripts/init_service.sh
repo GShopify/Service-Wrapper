@@ -118,6 +118,8 @@ models:
   HTML:
     model: github.com/gshopify/service-wrapper/scalar.Html
   JSON:
-    model: github.com/gshopify/service-wrapper/scalar.Json" > "$path/graphql/gqlgen.yml"
+    model: github.com/gshopify/service-wrapper/scalar.Json
+  Decimal:
+    model: github.com/gshopify/service-wrapper/scalar.Decimal" > "$path/graphql/gqlgen.yml"
 
 echo "== DONE"
