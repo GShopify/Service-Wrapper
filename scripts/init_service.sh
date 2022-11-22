@@ -46,6 +46,7 @@ printf '// +build tools\npackage tools\nimport (_ "github.com/99designs/gqlgen"\
 echo 'package main
 
 import(
+  "context"
   "github.com/gshopify/service-wrapper/config"
   "github.com/spf13/pflag"
   "log"
@@ -112,11 +113,11 @@ models:
     model: github.com/gshopify/service-wrapper/model.CountryCode
   UnsignedInt64:
     model: github.com/gshopify/service-wrapper/model.UInt
-    PageInfo:
-      model: github.com/gshopify/service-wrapper/model.PageInfo
-    HTML:
-      model: github.com/gshopify/service-wrapper/scalar.Html
-    JSON:
-      model: github.com/gshopify/service-wrapper/scalar.Json" > "$path/graphql/gqlgen.yml"
+  PageInfo:
+    model: github.com/gshopify/service-wrapper/model.PageInfo
+  HTML:
+    model: github.com/gshopify/service-wrapper/scalar.Html
+  JSON:
+    model: github.com/gshopify/service-wrapper/scalar.Json" > "$path/graphql/gqlgen.yml"
 
 echo "== DONE"
