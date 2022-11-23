@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"io"
 	"strconv"
+	"strings"
 )
 
 type LanguageCode string
@@ -300,12 +301,24 @@ func (e LanguageCode) String() string {
 	return string(e)
 }
 
-func (e LanguageCode) SqlFieldSelection(f string) string {
+func (e LanguageCode) SqlFieldSelection(f, namespace string) string {
+	field := func(f, namespace string) string {
+		builder := strings.Builder{}
+		builder.WriteString(namespace)
+
+		if builder.Len() > 0 {
+			builder.WriteString(".")
+		}
+
+		builder.WriteString(f)
+		return builder.String()
+	}(f, namespace)
+
 	if LanguageCodeEn == e {
-		return fmt.Sprintf("%[1]s['%[2]s'] as %[1]s", f, LanguageCodeEn)
+		return fmt.Sprintf("%[1]s['%[2]s'] as %[3]s", field, LanguageCodeEn, f)
 	}
 
-	return fmt.Sprintf("if(notEmpty(%[1]s['%[2]s']), %[1]s['%[2]s'], %[1]s['%[3]s']) as %[1]s", f, e, LanguageCodeEn)
+	return fmt.Sprintf("if(notEmpty(%[1]s['%[2]s']), %[1]s['%[2]s'], %[1]s['%[3]s']) as %[4]s", field, e, LanguageCodeEn, f)
 }
 
 func (e LanguageCode) SqlArraySelection(f string) string {
