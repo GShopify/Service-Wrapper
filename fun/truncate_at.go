@@ -1,6 +1,9 @@
 package fun
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 func TruncateAt(s string, size *int) (string, error) {
 	l := len(s)
@@ -16,5 +19,5 @@ func TruncateAt(s string, size *int) (string, error) {
 		*size = l
 	}
 
-	return s[:*size], nil
+	return strings.TrimSpace(s[:*size]), nil
 }

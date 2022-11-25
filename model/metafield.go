@@ -5,48 +5,21 @@ import (
 	"github.com/gshopify/service-wrapper/scalar"
 )
 
-type MetafieldType string
-
-const (
-	MetafieldTypeBoolean             MetafieldType = "boolean"
-	MetafieldTypeCollectionReference MetafieldType = "collection_reference"
-	MetafieldTypeColor               MetafieldType = "color"
-	MetafieldTypeDate                MetafieldType = "date"
-	MetafieldTypeDateTime            MetafieldType = "date_time"
-	MetafieldTypeDimension           MetafieldType = "dimension"
-	MetafieldTypeFileReference       MetafieldType = "file_reference"
-	MetafieldTypeJson                MetafieldType = "json"
-	MetafieldTypeMoney               MetafieldType = "money"
-	MetafieldTypeMultiLineTextField  MetafieldType = "multi_line_text_field"
-	MetafieldTypeNumberDecimal       MetafieldType = "number_decimal"
-	MetafieldTypeNumberInteger       MetafieldType = "number_integer"
-	MetafieldTypePageReference       MetafieldType = "page_reference"
-	MetafieldTypeProductReference    MetafieldType = "product_reference"
-	MetafieldTypeRating              MetafieldType = "rating"
-	MetafieldTypeSingleLineTextField MetafieldType = "single_line_text_field"
-	MetafieldTypeUrl                 MetafieldType = "url"
-	MetafieldTypeVariantReference    MetafieldType = "variant_reference"
-	MetafieldTypeVolume              MetafieldType = "volume"
-	MetafieldTypeWeight              MetafieldType = "weight"
-)
-
-func (m MetafieldType) String() string {
-	return string(m)
-}
-
-func MetafieldValue(t MetafieldType, v any) string {
-	switch t.String() {
-	case "single_line_text_field":
+func MetaFieldValue(t MetaFieldType, v any) string {
+	switch t {
+	case MetaFieldTypeSingleLineTextField:
 		return fmt.Sprintf("%s", v)
-	case "boolean":
+	case MetaFieldTypeBoolean:
 		return fmt.Sprintf("%v", v)
-	case "date_time":
+	case MetaFieldTypeDateTime:
 		dt := scalar.DateTime(0)
 		if err := dt.UnmarshalGQL(v); err != nil {
 			return fmt.Sprintf("%v", v)
 		}
 
 		return dt.String()
+	case MetaFieldTypeNumberInteger:
+		return fmt.Sprintf("%d", v)
 	}
 
 	return fmt.Sprintf("%v", v)
