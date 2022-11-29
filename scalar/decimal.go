@@ -58,3 +58,8 @@ func (d *Decimal) UnmarshalGQL(v interface{}) error {
 
 	return fmt.Errorf("illegal Decimal value: `%v`", d)
 }
+
+func (d *Decimal) Float() float64 {
+	f, _ := strconv.ParseFloat(d.String(), 64)
+	return f
+}
