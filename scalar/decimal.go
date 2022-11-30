@@ -60,6 +60,10 @@ func (d *Decimal) UnmarshalGQL(v interface{}) error {
 }
 
 func (d *Decimal) Float() float64 {
-	f, _ := strconv.ParseFloat(d.String(), 64)
+	f, err := strconv.ParseFloat(d.String(), 64)
+	if err != nil {
+		return 0
+	}
+
 	return f
 }
