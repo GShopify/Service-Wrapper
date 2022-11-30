@@ -95,8 +95,8 @@ Now we are ready to implement `graphql/generated/resolver.go` and start server `
 
 #### Products
 - [ ] `query` collection
-- [ ] `query` collections
-- [ ] `query` product
+- [x] `query` collections
+- [x] `query` product
 - [ ] `query` productRecommendations
 - [ ] `query` products
 - [ ] `query` productTags
