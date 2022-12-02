@@ -1,14 +1,14 @@
 package model
 
-type ProductTag struct {
+type ProductType struct {
 	Id         string   `db:"id" json:"id"`
-	Tag        string   `db:"tag" json:"tag"`
+	Type       string   `db:"type" json:"type"`
 	ProductIds []string `db:"products" json:"product_ids"`
 	Count      int      `db:"count" json:"count"`
 }
 
-func (t *ProductTag) IsNode() {}
+func (t *ProductType) IsNode() {}
 
-func (t *ProductTag) GetID() string {
-	return t.Tag
+func (t *ProductType) GetID() string {
+	return t.Type
 }
