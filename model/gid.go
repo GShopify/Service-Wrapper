@@ -11,6 +11,20 @@ const (
 	GidLocation      Gid = "Location"
 )
 
+var AllGids = []Gid{
+	GidProduct, GidCollection, GidOption, GidVariant, GidInventoryItem, GidLocation,
+}
+
+func (e Gid) IsValid() bool {
+	for _, t := range AllGids {
+		if t == e {
+			return true
+		}
+	}
+
+	return false
+}
+
 func (e Gid) String() string {
 	return string(e)
 }
