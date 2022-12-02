@@ -1,6 +1,7 @@
 ## Service Wrapper
 
 ![go-lint](https://github.com/GShopify/Service-Wrapper/actions/workflows/golangci-lint.yml/badge.svg?branch=main)
+![test](https://github.com/GShopify/Service-Wrapper/actions/workflows/test.yml/badge.svg?branch=main)
 
 Base wrapper for federated services
 
@@ -98,6 +99,6 @@ Now we are ready to implement `graphql/generated/resolver.go` and start server `
 - [x] `query` collections
 - [x] `query` product
 - [ ] `query` productRecommendations
-- [ ] `query` products
-- [ ] `query` productTags
+- [x] `query` products
+- [x] `query` productTags
 - [ ] `query` productTypes
