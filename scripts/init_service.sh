@@ -101,7 +101,6 @@ resolver:
   filename: generated/resolver.go
   type: Resolver
 autobind: []
-omit_getters: true
 #omit_getters: true
 #omit_slice_element_pointers: true
 models:
@@ -120,6 +119,7 @@ models:
   JSON:
     model: github.com/gshopify/service-wrapper/scalar.Json
   Decimal:
-    model: github.com/gshopify/service-wrapper/scalar.Decimal" > "$path/graphql/gqlgen.yml"
+    model: github.com/gshopify/service-wrapper/scalar.Decimal
+" > "$path/graphql/gqlgen.yml"
 
 echo "== DONE"
