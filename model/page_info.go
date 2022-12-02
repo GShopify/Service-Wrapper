@@ -1,6 +1,8 @@
 package model
 
-import "github.com/gshopify/service-wrapper/interfaces"
+import (
+	"github.com/gshopify/service-wrapper/interfaces"
+)
 
 type PageInfo struct {
 	EndCursor       *string `json:"endCursor"`
@@ -19,11 +21,11 @@ func NewPageInfo[T interfaces.Node](src []T, namespace Gid, first T, last T) *Pa
 		return info
 	}
 
-	if c, err := NewSimpleCursor(src[0].GetID(), namespace); err == nil {
+	if c, err := NewCursor(src[0].GetID(), namespace); err == nil {
 		info.StartCursor = c.String()
 	}
 
-	if c, err := NewSimpleCursor(src[size-1].GetID(), namespace); err == nil {
+	if c, err := NewCursor(src[size-1].GetID(), namespace); err == nil {
 		info.EndCursor = c.String()
 	}
 
